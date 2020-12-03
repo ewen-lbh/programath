@@ -1,0 +1,201 @@
+% Basic stuff
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+\usepackage[bookmarks, hidelinks, unicode]{hyperref}
+\usepackage[]{amsmath,amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage{lmodern}
+\usepackage{soul}
+\usepackage{float}
+\usepackage{minted}
+\usepackage{multicol}
+%\usepackage{unicode-math}
+
+% Packages configuration
+\usetikzlibrary{shapes.arrows, angles, quotes}
+\renewcommand{\arraystretch}{1.4}
+\restylefloat{table}
+
+% Shortcut commands
+\newcommand{\im}{\text{Im}\,}
+\newcommand{\re}{\text{Re}\,}
+\newcommand{\img}{\text{Img}\,}
+\newcommand{\R}{{\mathbb R}}
+\renewcommand{\C}{{\mathbb C}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Q}{{\mathbb Q}}
+\renewcommand{\U}{{\mathbb U}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cotan}{\operatorname{cotan}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\Aff}{\text{Aff}}
+\newcommand{\twoRows}[1]{\multirow{2}{*}{#1}}
+\newcommand{\threeRows}[1]{\multirow{3}{*}{#1}}
+\newcommand{\twoCols}[1]{\multicolumn{2}{c|}{#1}}
+\newcommand{\threeCols}[1]{\multicolumn{3}{|c|}{#1}}
+\newcommand{\twoColsNB}[1]{\multicolumn{2}{c}{#1}}
+\newcommand{\goesto}[2]{\xrightarrow[#1\:\to\:#2]{}}
+\newcommand{\liminfty}{\lim_{x\to+\infty}}
+\newcommand{\limminfty}{\lim_{x\to-\infty}}
+\newcommand{\limzero}{\lim_{x\to0}}
+\newcommand{ \const}{\text{cste}}
+\newcommand{\et}{\:\text{et}\:}
+\newcommand{\ou}{\:\text{ou}\:}
+\newcommand{\placeholder}{\diamond}
+\newcommand{\mediateur}{\:\text{med}\:}
+\newcommand{\milieu}{\:\text{mil}\:}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\point}[2]{(#1;\;#2)}
+\newcommand{\spacepoint}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\newcommand{\sh}{\operatorname{sh}}
+\newcommand{\ch}{\operatorname{ch}}
+\renewcommand{\th}{\operatorname{th}}
+\newcommand{\id}{\operatorname{id}}
+\renewcommand{\cong}{\equiv}
+\newcommand{\converges}[2]{\xrightarrow[{#1\to #2}]{}}
+\newcommand{\convergedby}[2]{\xleftarrow[{#1\to #2}]{}}
+
+\newcommand{\singlecomparison}[2]{%
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{7.5cm}|p{7.5cm}}
+Python & Math \\\hline
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+#1
+\end{minted}
+\end{minipage}
+       & #2
+\end{tabular}
+\end{table}
+}
+
+\newenvironment{python}{%
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+}{%
+\end{minted}
+\end{minipage}
+}
+
+% Document
+\begin{document}
+
+\section*{\LARGE Programath}
+\tableofcontents
+
+\newpage
+\section{\texttt{=} vs \texttt{==}}
+En maths, on note indifféremment le = de la \textbf{déclaration} et le = de l'\textbf{hypothèse}.
+
+\begin{itemize}
+	\item Ce que j'appelle le \emph{= de la déclaration}, c'est celui qu'on utilise pour poser une variable: "Soit $a = 45$".
+	\item Ce que j'appelle le \emph{= de l'hypothèse}, c'est le = dont on n'est pas sûr, celui que l'on veut prouver ou réfuter: "Supposons $b = c+d$".
+\end{itemize}
+
+En programmation, ce que vous dites est interprété par une machine, qui ne peut pas déduire cette différence cruciale toute seule.
+On est donc obligé de noter les "deux =" différement:
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{7.5cm}|p{7.5cm}}
+Python & Math \\\hline
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+a = 45
+\end{minted}
+\end{minipage}
+       & Soit $a = 45$ \\
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+a == 45
+\end{minted} 
+\end{minipage} & $a = 45$ \\
+
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+P = a == 45
+\end{minted} 
+\end{minipage} & Soit $P$ la propriété "$a = 45$" \\
+\end{tabular}
+\end{table}
+
+Comme en programmation on pose (ie on déclare) plus que l'on ne teste, le "=" tout simple sert de "= de la déclaration".
+
+\section{Syntaxe de base}
++, $\times$ et tout ça.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{7.5cm}|p{7.5cm}}
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+(1 + 2) * 3 - 4**6
+\end{minted}
+\end{minipage}
+       & $(1+2)\cdot 3 - 4^6$ \\
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+a//b + a/b
+\end{minted} 
+\end{minipage} & $\displaystyle \left\lfloor \frac{a}{b} \right\rfloor + \frac{a}{c}$ \\
+
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+r = a%b
+\end{minted}
+\end{minipage}
+       & Posons $r$ tel que $a = \left\lfloor \frac{a}{b} \right\rfloor b + r$ \\
+\hline
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+from math import sqrt 
+sqrt(5) 
+\end{minted}
+\end{minipage}
+       & $ \sqrt{5}  $ \\
+\end{tabular}
+\end{table}
+
+\section{Truc intéréssants}
+
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{7.5cm}|p{7.5cm}}
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+range(a, b)
+\end{minted}
+\end{minipage}
+       & $\llbracket a, b \llbracket$ \\
+
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+{ 2*a for a in A }
+\end{minted}
+\end{minipage}
+       & $ \{2a,\ a \in A\}$ \\
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+{ a for a in A if a**2 == a/2 }
+\end{minted}
+\end{minipage}
+       & $ \{a \in A,\ a^2 = \frac{a}{2}\}$ \\
+\multicolumn{2}{c}{Une version qui mélange les deux} \\
+
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+{ f(a) for a in A if P(a) }
+\end{minted}
+\end{minipage}
+       & $ \{f(a),\ a \in A,\ P(a)\}$ \emph{(pas vraiment légal mais on l'a utilisé une fois)}  \\
+\end{tabular}
+\end{table}
+
+\end{document}
+
