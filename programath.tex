@@ -195,14 +195,13 @@ Les ensemble ça existe aussi en Python, et c'est très similaire aux ensembles 
 	\item Il n'y a pas de notion d'ordre des éléments (on a \texttt{\{2, 4\} = \{4, 2\}})
 \end{itemize}
 
-Bien sûr, tout s'adapte aux listes (sauf pour $\cup$ et $\cap$),
-c'est juste qu'avec des ensembles c'est plus simple pour faire des parallèles avec les maths.
+Bien sûr, tout s'adapte aux listes, c'est juste qu'avec des ensembles c'est plus simple pour faire des parallèles avec les maths.
 {\footnotesize
 Pour les spés, on peut considérer la liste en Python comme une matrice-ligne
 (avec une seule ligne et $n$ colonnes). Mais j'ai pas fait spé donc je vais éviter de dire des conneries, je reste sur des parallèles Python/maths avec des ensembles.
 }
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{p{7.5cm}|p{7.5cm}}
 \begin{minipage}{0.5\linewidth}
@@ -218,12 +217,6 @@ len(A)
 \end{minted}
 \end{minipage}
        & $\#A$\\ 
-\begin{minipage}{0.5\linewidth}
-\begin{minted}{python}
-{1, 2, 4} | {5, 10, 20} ^ {5, 6}
-\end{minted}
-\end{minipage}
-       & $ \{1, 2, 4\} \cup \{5, 10, 20\} \cap \{5, 6\}   $\\ 
 \begin{minipage}{0.5\linewidth}
 \begin{minted}{python}
 { 2*a for a in A }
@@ -247,6 +240,51 @@ len(A)
 \end{tabular}
 \end{table}
 
+\section{Opérateurs sur les ensembles}
+
+Là, pas d'équivalents pour les listes
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{p{7.5cm}|p{7.5cm}}
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+A | B
+\end{minted}
+\end{minipage}
+       & $A \cup B$\\
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+A & B
+\end{minted}
+\end{minipage}
+       & $A \cap B$\\
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+A ^ B
+\end{minted}
+\end{minipage}
+       & $A \Delta B$\\
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+A - B
+\end{minted}
+\end{minipage}
+       & $A \setminus B$\\
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+A < B <= C > D >= E
+\end{minted}
+\end{minipage}
+       & $A \subsetneq B \subset C \supsetneq D \supset E$\\
+\begin{minipage}{0.5\linewidth}
+\begin{minted}{python}
+b in B # Marche aussi avec les listes
+\end{minted}
+\end{minipage}
+       & $b \in B$\\
+\end{tabular}
+\end{table}
 %\subsection{\texttt{[]} vs \texttt{\{\}}}
 
 
